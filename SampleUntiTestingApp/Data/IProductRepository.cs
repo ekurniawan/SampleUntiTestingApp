@@ -5,7 +5,7 @@ namespace SampleUntiTestingApp.Data
 {
     public interface IProductRepository
     {
-        IEnumerable<Product> FindAll();
+        IList<Product> FindAll();
         Product FindByName(string productName);
         Product FindById(int productId);
         bool Save(Product target);
