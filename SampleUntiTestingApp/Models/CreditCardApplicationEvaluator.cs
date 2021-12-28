@@ -8,7 +8,19 @@
 
         public CreditCardApplicationDecision Evaluate(CreditCardApplication application)
         {
-
+            if (application.GrossAnnualIncome >= HighIncomeThreshold)
+            {
+                return CreditCardApplicationDecision.AutoAccepted;
+            }
+            if (application.Age <= AutoReferralMaxAge)
+            {
+                return CreditCardApplicationDecision.ReferredToHuman;
+            }
+            if (application.GrossAnnualIncome < LowIncomeThreshold)
+            {
+                return CreditCardApplicationDecision.AutoDeclined;
+            }
+            return CreditCardApplicationDecision.ReferredToHuman;
         }
     }
 }
