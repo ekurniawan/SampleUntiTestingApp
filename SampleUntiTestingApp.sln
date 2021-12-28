@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleUntiTestingApp", "SampleUntiTestingApp\SampleUntiTestingApp.csproj", "{DE218941-3A59-4CE0-81F9-1AE1F4096D3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCards.Test", "CreditCards.Test\CreditCards.Test.csproj", "{8DE6371C-E7E5-420E-A431-BB0019E26BBC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DE218941-3A59-4CE0-81F9-1AE1F4096D3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE218941-3A59-4CE0-81F9-1AE1F4096D3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE218941-3A59-4CE0-81F9-1AE1F4096D3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DE6371C-E7E5-420E-A431-BB0019E26BBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DE6371C-E7E5-420E-A431-BB0019E26BBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DE6371C-E7E5-420E-A431-BB0019E26BBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DE6371C-E7E5-420E-A431-BB0019E26BBC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
