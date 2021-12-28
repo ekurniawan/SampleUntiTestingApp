@@ -30,5 +30,14 @@ namespace CreditCards.Test.Controllers
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("Invalid request for id 0", badRequestResult.Value);
         }
+
+        [Fact]
+        public void PostOk()
+        {
+            var sut = new ValuesController();
+            ActionResult result = sut.Post();
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            Assert.Equal("batch job started", okResult.Value);
+        }
     }
 }
