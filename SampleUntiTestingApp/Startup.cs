@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using SampleUntiTestingApp.Data;
+using SampleUntiTestingApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,9 @@ namespace SampleUntiTestingApp
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("LocalConnection")));
             services.AddControllers();
+
+            services.AddSingleton<IFrequentFlyerNumberValidator, FrequentFlyerNumberValidator>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SampleUntiTestingApp", Version = "v1" });
