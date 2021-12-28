@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace CreditCards.Test.Data
 {
@@ -56,6 +57,56 @@ namespace CreditCards.Test.Data
                     return true;
                 });
             this.MockProductsRepository = mockProductRepo.Object;
+        }
+
+        [Fact]
+        public void CanReturnProductById()
+        {
+            Product testProduct = this.MockProductsRepository.FindById(2);
+            Assert.NotNull(testProduct);
+            Assert.IsType<Product>(testProduct);
+            Assert.Equal("TDD Fundamentals", testProduct.Name);
+        }
+
+        [Fact]
+        public void CanFindAllProduct()
+        {
+            IList<Product> testProduct = this.MockProductsRepository.FindAll();
+
+            Assert.NotNull(testProduct);
+            Assert.Equal(3,testProduct.Count);
+        }
+
+        [Fact]
+        public void CanReturnProductByName()
+        {
+            Product testProducts = this.MockProductsRepository.FindByName("ASP Core Fundamentals");
+            Assert.NotNull(testProducts);
+            Assert.IsType<Product>(testProducts);
+            Assert.Equal(1, testProducts.ProductId);
+        }
+
+        [Fact]
+        public void CanInsertProduct()
+        {
+            Product newProduct = new Product
+            {
+                Name = "Blazor Fundamentals",
+                Description = "Blazor Fundamentals",
+                Price = 50
+            };
+
+            int productCount = this.MockProductsRepository.FindAll().Count;
+            Assert.Equal(3, productCount);
+
+            this.MockProductsRepository.Save(newProduct);
+
+            productCount = this.MockProductsRepository.FindAll().Count;
+            Assert.Equal(4, productCount);
+
+            Product testProduct = this.MockProductsRepository.FindByName("Blazor Fundamentals");
+            Assert.NotNull(testProduct);
+            Assert.IsType<Product>(testProduct);
         }
     }
 }
