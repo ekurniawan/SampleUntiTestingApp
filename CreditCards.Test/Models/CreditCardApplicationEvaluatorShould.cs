@@ -1,4 +1,5 @@
-﻿using SampleUntiTestingApp.Models;
+﻿using Moq;
+using SampleUntiTestingApp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,17 @@ namespace CreditCards.Test.Models
                 FrequentFlyerNumber = "01g345-B"
             };
             Assert.Equal(CreditCardApplicationDecision.ReferredToHuman,
+                sut.Evaluate(application));
+        }
+
+        [Fact]
+        public void ReferInvalidFrequentFlyerNumbers_MockValidater()
+        {
+            var mockValidator = new Mock<IFrequentFlyerNumberValidator>();
+            mockValidator.Setup(x => x.IsValid(It.IsAny<string>())).Returns(false);
+            var sut = new CreditCardApplicationEvaluator(mockValidator.Object);
+            var application = new CreditCardApplication();
+            Assert.Equal(CreditCardApplicationDecision.ReferredToHuman, 
                 sut.Evaluate(application));
         }
     }
