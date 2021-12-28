@@ -15,12 +15,12 @@ namespace SampleUntiTestingApp.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult Get(int id)
         {
             if (id < 1)
                 return BadRequest($"Invalid request for id {id}");
 
-            return id.ToString();
+            return Content(id.ToString());
         }
 
         [HttpPost]

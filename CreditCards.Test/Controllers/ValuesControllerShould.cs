@@ -1,4 +1,5 @@
-﻿using SampleUntiTestingApp.Controllers;
+﻿using Microsoft.AspNetCore.Mvc;
+using SampleUntiTestingApp.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,15 @@ namespace CreditCards.Test.Controllers
             Assert.Equal(2, result.Length);
             Assert.Equal("value1", result[0]);
             Assert.Equal("value2", result[1]);
+        }
+
+        [Fact]
+        public void ReturnBadRequest()
+        {
+            var sut = new ValuesController();
+            ActionResult result = sut.Get(0);
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            Assert.Equal("Invalid request for id 0", badRequestResult.Value);
         }
     }
 }
